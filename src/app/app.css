@@ -1,0 +1,23 @@
+:host { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
+
+.site-nav {
+  flex: none; height: var(--nav-h, 48px); display: flex; align-items: center; gap: 18px; padding: 0 18px;
+  background: var(--ink); color: #f6e7d8; border-bottom: 2px solid var(--gold);
+}
+.brand { display: inline-flex; align-items: center; gap: 8px; color: #ffe9b8; text-decoration: none; font: 700 19px Georgia, serif; flex: none; }
+.links { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.links a {
+  flex: none; padding: 7px 12px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; color: #f6e7d8; white-space: nowrap;
+}
+.links a:hover { background: rgba(255, 255, 255, .12); }
+.links a.active { background: var(--gold); color: #2b1608; }
+.links a:focus-visible { outline: 3px solid rgba(255, 226, 150, .7); outline-offset: 1px; }
+
+/* the page under the nav fills the rest of the screen; pages that are taller than it scroll inside it */
+.page-area { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; overflow: auto; }
+
+@media (max-width: 480px) {
+  .site-nav { gap: 8px; padding: 0 8px; }
+  .brand span { display: none; }
+  .links a { padding: 8px 10px; font-size: 13px; }
+}

@@ -1,0 +1,83 @@
+<div class="layout" [class.with-json]="showJson()">
+  <div class="main">
+    <header class="topbar">
+      <h1>Vedic Cosmology <small>{{ store.count() }} lokas</small></h1>
+      <div class="group files">
+        <button type="button" class="btn" (click)="store.expandAll()">Expand all</button>
+        <button type="button" class="btn" (click)="store.collapseAll()">Collapse all</button>
+        <button type="button" class="btn" (click)="store.openFile()">Open</button>
+        <button type="button" class="btn primary" (click)="store.saveFile()">
+          {{ store.io.linkedName() ? 'Save → ' + store.io.linkedName() : 'Save JSON' }}
+        </button>
+        @if (store.io.linkedName()) {
+          <label class="check">
+            <input type="checkbox" [checked]="store.io.autosave()" (change)="store.setAutosave($any($event.target).checked)" />
+            Auto-save
+          </label>
+        }
+        <button type="button" class="btn" (click)="confirmReset.set(true)">Reset</button>
+        <button type="button" class="btn" [attr.aria-pressed]="showJson()" (click)="showJson.set(!showJson())">
+          {{ showJson() ? 'Hide JSON' : 'JSON' }}
+        </button>
+      </div>
+    </header>
+
+    <div class="cosmos" (click)="store.select(null)">
+      @if (store.loading()) {
+        <p class="empty">Loading lokas…</p>
+      }
+      @for (l of store.children(null); track l.id) {
+        <app-loka [lokaId]="l.id" [depth]="0" />
+      }
+    </div>
+
+    <section class="actions" aria-label="Actions for the selected loka">
+      <div class="current">
+        @if (store.selected(); as s) {
+          <span class="dot" [style.background-color]="s.color"></span>
+          <div class="who">
+            <strong>#{{ s.id }} {{ s.name }}</strong>
+            @if (s.description) {
+              <span class="desc">{{ s.description }}</span>
+            }
+          </div>
+        } @else {
+          <span class="hintline">Tap a loka to select it, then add, edit or delete.</span>
+        }
+      </div>
+      <div class="buttons">
+        <button type="button" class="btn" [disabled]="!store.selected()" (click)="addInside()"
+                title="Add a sub-loka inside the selected loka">+ Inside</button>
+        <button type="button" class="btn" [disabled]="!store.selected() || store.selectedIsRoot()" (click)="addBeside()"
+                [attr.title]="store.selectedIsRoot() ? 'The root loka has no siblings' : 'Add a loka next to the selected one, at the same level'">+ Beside</button>
+        <button type="button" class="btn" [disabled]="!store.selectedHasChildren()" (click)="addMiddle()"
+                title="Add a loka inside the selected one and move the lokas directly inside it into the new loka">+ Middle</button>
+        <button type="button" class="btn" [disabled]="!store.selected()" (click)="edit()">Edit</button>
+        <button type="button" class="btn danger" [disabled]="!store.selected() || store.selectedIsRoot()" (click)="askDelete()"
+                [attr.title]="store.selectedIsRoot() ? 'The root loka cannot be deleted' : null">Delete</button>
+      </div>
+    </section>
+  </div>
+
+  @if (showJson()) {
+    <aside class="json" aria-label="Live JSON">
+      <h2>JSON <small>updates as you edit</small></h2>
+      <pre>{{ store.json() }}</pre>
+    </aside>
+  }
+</div>
+
+<div class="toast" role="status" aria-live="polite">{{ store.notice() }}</div>
+
+@if (form(); as f) {
+  <app-loka-form [title]="f.title" [hint]="f.hint" [okText]="f.okText" [initial]="f.initial"
+                 [selectName]="f.mode === 'edit'" (saved)="onSaved($event)" (cancelled)="form.set(null)" />
+}
+@if (confirmDelete(); as c) {
+  <app-confirm-box [title]="c.title" [message]="c.message" okText="Delete" (confirmed)="doDelete()" (cancelled)="confirmDelete.set(null)" />
+}
+@if (confirmReset()) {
+  <app-confirm-box title="Reset lokas"
+                   message="This discards your current lokas in the browser and reloads the original list from data/lokas.json. Save first if you want to keep them."
+                   okText="Reset" (confirmed)="doReset()" (cancelled)="confirmReset.set(false)" />
+}

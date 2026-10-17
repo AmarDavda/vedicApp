@@ -1,0 +1,21 @@
+@if (node(); as n) {
+  <button type="button" class="card" [class.male]="n.gender === 'male'" [class.female]="n.gender === 'female'"
+          [class.consort]="n.type === 'consort'" [class.selected]="store.selectedId() === n.id"
+          [attr.aria-pressed]="store.selectedId() === n.id"
+          [attr.title]="n.description ? n.name + ' — ' + n.description : n.name" (click)="store.select(n.id)">
+    <span class="id">
+      #{{ n.id }}@if (n.type === 'consort') { · consort of #{{ n.parentId }} }
+    </span>
+    <span class="name">{{ n.name }}</span>
+    @if (n.description) {
+      <span class="note">{{ n.description }}</span>
+    }
+  </button>
+  @if (kids().length) {
+    <ul>
+      @for (c of kids(); track c.id) {
+        <li appBranch [nodeId]="c.id"></li>
+      }
+    </ul>
+  }
+}

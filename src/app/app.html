@@ -1,0 +1,22 @@
+@if (!isHome()) {
+<nav class="site-nav" aria-label="Main">
+  <a class="brand" routerLink="/" aria-label="Vedic App home">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6" />
+      <circle cx="12" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="1.6" />
+      <circle cx="12" cy="12" r="2" fill="currentColor" />
+    </svg>
+    <span>Vedic App</span>
+  </a>
+  <div class="links">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/cosmology" routerLinkActive="active">Cosmology</a>
+    <a routerLink="/genealogy" routerLinkActive="active">Genealogy</a>
+    <a routerLink="/reading" routerLinkActive="active">Reading</a>
+  </div>
+</nav>
+}
+
+<div class="page-area">
+  <router-outlet />
+</div>

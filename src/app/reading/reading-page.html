@@ -1,0 +1,82 @@
+<header class="topbar">
+  <h1>Other Vedic Reading Materials <small>{{ items().length }} {{ items().length === 1 ? 'PDF' : 'PDFs' }}</small></h1>
+</header>
+
+<div class="wrap">
+  <div id="reading-top" class="search" role="search">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" class="mag">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5 L21 21" /></g>
+    </svg>
+    <input #q type="search" autocomplete="off" spellcheck="false" placeholder="Search by title…" aria-label="Search reading materials"
+           [value]="query()" (input)="onSearch($any($event.target).value)" />
+    @if (query()) {
+      <button type="button" class="clear" aria-label="Clear search" (click)="clear(q)">×</button>
+    }
+  </div>
+
+  <p class="status" role="status" aria-live="polite">
+    @if (loading()) {
+      Loading…
+    } @else if (error()) {
+      &nbsp;
+    } @else if (items().length === 0) {
+      &nbsp;
+    } @else if (query().trim()) {
+      {{ view().total }} {{ view().total === 1 ? 'result' : 'results' }} for “{{ query().trim() }}”@if (view().total > 0) { · showing {{ view().from }}–{{ view().to }} }
+    } @else {
+      Showing {{ view().from }}–{{ view().to }} of {{ view().total }}
+    }
+  </p>
+
+  @if (error()) {
+    <div class="note error">{{ error() }}</div>
+  } @else if (!loading() && items().length === 0) {
+    <div class="note">
+      <strong>No reading material yet.</strong>
+      <span>Put PDF files into <code>public/data/reading-material/</code>. They appear here automatically while <code>npm start</code> is running.</span>
+    </div>
+  } @else if (!loading() && view().total === 0) {
+    <div class="note">
+      <strong>Nothing matches “{{ query().trim() }}”.</strong>
+      <span>Try fewer or different words.</span>
+    </div>
+  }
+
+  @if (view().items.length) {
+    <ul class="list">
+      @for (it of view().items; track it.file) {
+        <li>
+          <a class="item" [href]="it.url" target="_blank" rel="noopener">
+            <span class="badge" aria-hidden="true">PDF</span>
+            <span class="meta">
+              <span class="title">{{ it.title }}</span>
+              <span class="sub">
+                @if (size(it.size)) { <span>{{ size(it.size) }}</span> }
+                @if (date(it.modified)) { <span>{{ date(it.modified) }}</span> }
+              </span>
+            </span>
+            <span class="open">Read <span aria-hidden="true">↗</span></span>
+          </a>
+        </li>
+      }
+    </ul>
+  }
+
+  @if (view().pageCount > 1) {
+    <nav class="pager" aria-label="Pages">
+      <button type="button" class="pg step" [disabled]="view().page === 1" (click)="go(view().page - 1)">‹ <span class="word">Prev</span></button>
+      <span class="nums">
+        @for (b of buttons(); track $index) {
+          @if (b === '…') {
+            <span class="gap" aria-hidden="true">…</span>
+          } @else {
+            <button type="button" class="pg" [class.on]="b === view().page" [attr.aria-current]="b === view().page ? 'page' : null"
+                    [attr.aria-label]="'Page ' + b" (click)="go(b)">{{ b }}</button>
+          }
+        }
+      </span>
+      <span class="of">Page {{ view().page }} of {{ view().pageCount }}</span>
+      <button type="button" class="pg step" [disabled]="view().page === view().pageCount" (click)="go(view().page + 1)"><span class="word">Next</span> ›</button>
+    </nav>
+  }
+</div>

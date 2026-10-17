@@ -1,0 +1,67 @@
+<header class="topbar">
+  <h1>Family Tree <small>{{ store.count() }} {{ store.count() === 1 ? 'node' : 'nodes' }}</small></h1>
+  <div class="group files">
+    <button type="button" class="btn" (click)="store.openFile()">Open</button>
+    <button type="button" class="btn primary" (click)="store.saveFile()">
+      {{ store.linkedName() ? 'Save → ' + store.linkedName() : 'Save JSON' }}
+    </button>
+    @if (store.linkedName()) {
+      <label class="check">
+        <input type="checkbox" [checked]="store.autosave()" (change)="store.setAutosave($any($event.target).checked)" />
+        Auto-save
+      </label>
+    }
+    <button type="button" class="btn" (click)="reset()">Reset</button>
+    <button type="button" class="btn" [attr.aria-pressed]="showJson()" (click)="showJson.set(!showJson())">
+      {{ showJson() ? 'Hide JSON' : 'JSON' }}
+    </button>
+  </div>
+</header>
+
+<main class="stage" [class.with-json]="showJson()">
+  <div class="viewport">
+    <div class="canvas" #canvas (pointerdown)="panStart($event, canvas)" (pointermove)="panMove($event, canvas)"
+         (pointerup)="panEnd()" (pointerleave)="panEnd()">
+      <ul class="tree" [style.zoom]="zoom()">
+        <li appBranch [nodeId]="store.rootId()"></li>
+      </ul>
+    </div>
+    <div class="zoombar" role="group" aria-label="Zoom">
+      <button type="button" aria-label="Zoom out" (click)="zoomBy(-0.1)">−</button>
+      <button type="button" class="pct" aria-label="Reset zoom" (click)="zoom.set(1)">{{ (zoom() * 100).toFixed(0) }}%</button>
+      <button type="button" aria-label="Zoom in" (click)="zoomBy(0.1)">+</button>
+    </div>
+  </div>
+
+  @if (showJson()) {
+    <aside class="json" aria-label="Live JSON">
+      <h2>JSON <small>updates as you edit</small></h2>
+      <pre>{{ store.json() }}</pre>
+    </aside>
+  }
+</main>
+
+<section class="actions" aria-label="Actions for the selected node">
+  <div class="current">
+    <span class="dot" [class.male]="store.selected().gender === 'male'" [class.female]="store.selected().gender === 'female'"></span>
+    <div class="who">
+      <strong>#{{ store.selected().id }} {{ store.selected().name }}</strong>
+      @if (store.selected().description) {
+        <span class="desc">{{ store.selected().description }}</span>
+      }
+    </div>
+  </div>
+  <div class="buttons">
+    <button type="button" class="btn" [disabled]="!store.canAddConsort()" (click)="addConsort()"
+            [attr.title]="store.canAddConsort() ? null : 'Select the main node to add another consort'">+ Consort</button>
+    <button type="button" class="btn" (click)="addChild()">+ Child</button>
+    <button type="button" class="btn" [disabled]="!store.selectedHasChildren()" (click)="addMiddle()"
+            title="Insert a node below the selected one; its current children move under the new node">+ Middle</button>
+    <button type="button" class="btn" (click)="edit()">Edit</button>
+    <button type="button" class="btn danger" [disabled]="store.selected().type === 'root'" (click)="remove()"
+            [attr.title]="store.selected().type === 'root' ? 'The first node cannot be deleted' : null">Delete</button>
+  </div>
+</section>
+
+<div class="toast" role="status" aria-live="polite">{{ store.notice() }}</div>
+<app-dialog />

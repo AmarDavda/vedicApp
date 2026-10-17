@@ -1,0 +1,59 @@
+<section class="hero">
+  <svg class="mandala" viewBox="0 0 200 200" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="1.2">
+      <circle cx="100" cy="100" r="92" />
+      <circle cx="100" cy="100" r="74" stroke-dasharray="3 5" />
+      <circle cx="100" cy="100" r="56" />
+      <circle cx="100" cy="100" r="38" stroke-dasharray="2 4" />
+      <circle cx="100" cy="100" r="20" />
+      <path d="M100 8 L100 192 M8 100 L192 100 M35 35 L165 165 M165 35 L35 165" opacity=".5" />
+    </g>
+    <circle cx="100" cy="100" r="6" fill="currentColor" />
+  </svg>
+  <h1>Vedic App</h1>
+  <p class="lead">Worlds, lineages and sacred texts — explored in one place.</p>
+</section>
+
+<section class="tiles" aria-label="Pages">
+  @for (t of tiles; track t.title) {
+    @if (t.link) {
+      <a class="tile" [routerLink]="t.link">
+        <ng-container *ngTemplateOutlet="body; context: { $implicit: t }" />
+      </a>
+    } @else {
+      <div class="tile off" aria-disabled="true">
+        <ng-container *ngTemplateOutlet="body; context: { $implicit: t }" />
+      </div>
+    }
+  }
+</section>
+
+<ng-template #body let-t>
+  <span class="icon" aria-hidden="true">
+    @switch (t.icon) {
+      @case ('cosmos') {
+        <svg viewBox="0 0 48 48" width="40" height="40"><g fill="none" stroke="currentColor" stroke-width="2.2">
+          <rect x="4" y="4" width="40" height="40" rx="9" /><rect x="11" y="11" width="26" height="26" rx="6" /><rect x="18" y="18" width="12" height="12" rx="3" />
+        </g></svg>
+      }
+      @case ('tree') {
+        <svg viewBox="0 0 48 48" width="40" height="40"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <rect x="17" y="4" width="14" height="9" rx="3" /><rect x="3" y="35" width="14" height="9" rx="3" /><rect x="31" y="35" width="14" height="9" rx="3" />
+          <path d="M24 13 V24 M10 35 V24 H38 V35" />
+        </g></svg>
+      }
+      @case ('book') {
+        <svg viewBox="0 0 48 48" width="40" height="40"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M24 12 C19 8 11 8 5 10 V38 C11 36 19 36 24 40 C29 36 37 36 43 38 V10 C37 8 29 8 24 12 Z" /><path d="M24 12 V40" />
+        </g></svg>
+      }
+    }
+  </span>
+  <span class="title">{{ t.title }}</span>
+  <span class="text">{{ t.text }}</span>
+  @if (t.link) {
+    <span class="go">Open <span aria-hidden="true">→</span></span>
+  } @else {
+    <span class="badge">Coming soon</span>
+  }
+</ng-template>

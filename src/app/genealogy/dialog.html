@@ -1,0 +1,44 @@
+@if (dialog.state(); as s) {
+  <div class="backdrop" (click)="dialog.cancel()">
+    <form class="dialog" role="dialog" aria-modal="true" [attr.aria-label]="s.title"
+          (click)="$event.stopPropagation()" (submit)="$event.preventDefault(); dialog.accept()">
+      <h2>{{ s.title }}</h2>
+
+      @if (s.kind === 'form') {
+        @if (s.hint) {
+          <p class="hint">{{ s.hint }}</p>
+        }
+        <label>
+          <span>Name</span>
+          <input #field type="text" autocomplete="off" [attr.maxlength]="maxName" [value]="s.name"
+                 (input)="dialog.patch({ name: $any($event.target).value })" />
+        </label>
+
+        <div class="field">
+          <span>Gender</span>
+          <div class="seg" role="group" aria-label="Gender">
+            <button type="button" class="male" [class.on]="s.gender === 'male'" [attr.aria-pressed]="s.gender === 'male'"
+                    (click)="dialog.patch({ gender: 'male' })">Male</button>
+            <button type="button" class="female" [class.on]="s.gender === 'female'" [attr.aria-pressed]="s.gender === 'female'"
+                    (click)="dialog.patch({ gender: 'female' })">Female</button>
+          </div>
+        </div>
+
+        <label>
+          <span>Short description <em>(optional)</em></span>
+          <textarea rows="3" [attr.maxlength]="maxDescription" [value]="s.description"
+                    (input)="dialog.patch({ description: $any($event.target).value })"></textarea>
+          <small>{{ s.description.length }} / {{ maxDescription }}</small>
+        </label>
+      } @else {
+        <p class="msg">{{ s.message }}</p>
+      }
+
+      <div class="row">
+        <button type="button" class="btn" (click)="dialog.cancel()">Cancel</button>
+        <button type="submit" class="btn" [class.primary]="!s.danger" [class.danger]="s.danger"
+                [disabled]="s.kind === 'form' && !s.name.trim()">{{ s.okText }}</button>
+      </div>
+    </form>
+  </div>
+}

@@ -1,0 +1,42 @@
+<div class="backdrop" (click)="cancelled.emit()">
+  <form class="dialog" role="dialog" aria-modal="true" [attr.aria-label]="title()"
+        (click)="$event.stopPropagation()" (submit)="$event.preventDefault(); submit()">
+    <h2>{{ title() }}</h2>
+    @if (hint()) {
+      <p class="hint">{{ hint() }}</p>
+    }
+
+    <label>
+      <span>Name</span>
+      <input #field type="text" autocomplete="off" [attr.maxlength]="maxName" [value]="name()"
+             (input)="name.set($any($event.target).value)" />
+    </label>
+
+    <label>
+      <span>Description <em>(optional — e.g. who lives here)</em></span>
+      <textarea rows="3" [attr.maxlength]="maxDescription" [value]="description()"
+                (input)="description.set($any($event.target).value)"></textarea>
+      <small>{{ description().length }} / {{ maxDescription }}</small>
+    </label>
+
+    <div class="field">
+      <span>Color</span>
+      <div class="color-row">
+        <input type="color" class="picker" aria-label="Pick a color" [value]="color()" (input)="pick($any($event.target).value)" />
+        <input type="text" class="hex" [class.bad]="!hexValid()" spellcheck="false" autocomplete="off" aria-label="Hex color"
+               [value]="hexText()" (input)="typeHex($any($event.target).value)" />
+        <span class="preview" [style.background-color]="color()" aria-hidden="true"></span>
+      </div>
+      <div class="swatches" role="group" aria-label="Quick colors">
+        @for (s of swatches; track s) {
+          <button type="button" class="sw" [style.background-color]="s" [attr.aria-label]="'Use ' + s" (click)="pick(s)"></button>
+        }
+      </div>
+    </div>
+
+    <div class="row">
+      <button type="button" class="btn" (click)="cancelled.emit()">Cancel</button>
+      <button type="submit" class="btn primary" [disabled]="!name().trim() || !hexValid()">{{ okText() }}</button>
+    </div>
+  </form>
+</div>

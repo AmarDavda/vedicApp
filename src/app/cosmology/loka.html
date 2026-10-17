@@ -1,0 +1,27 @@
+@if (loka(); as l) {
+  <div class="loka" tabindex="0" role="group" [attr.aria-label]="l.name" [attr.data-level]="level()"
+       [style.background-color]="l.color" [style.color]="textColor()"
+       [class.selected]="store.selectedId() === l.id"
+       (click)="select($event)" (keydown.enter)="select($event)" (keydown.space)="select($event); $event.preventDefault()">
+    <div class="head">
+      @if (kids().length) {
+        <button type="button" class="fold" [attr.aria-expanded]="!isCollapsed()"
+                [attr.aria-label]="(isCollapsed() ? 'Expand ' : 'Collapse ') + l.name" (click)="fold($event)">
+          {{ isCollapsed() ? '▸' : '▾' }}
+        </button>
+      }
+      <h2 class="name">{{ l.name }}</h2>
+      <span class="sid">#{{ l.id }}</span>
+    </div>
+    @if (l.description) {
+      <p class="desc">{{ l.description }}</p>
+    }
+    @if (isCollapsed()) {
+      <p class="more">{{ hidden() }} inside · tap ▸ to open</p>
+    } @else {
+      @for (c of kids(); track c.id) {
+        <app-loka [lokaId]="c.id" [depth]="depth() + 1" />
+      }
+    }
+  </div>
+}
