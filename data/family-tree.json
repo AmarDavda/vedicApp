@@ -1,0 +1,15 @@
+{
+  "lastId": 10,
+  "nodes": [
+    { "id": 1, "name": "Brahma", "gender": "male", "parentId": null, "type": "root" },
+    { "id": 2, "name": "Savitri", "gender": "female", "description": "- daughter of 'Savitr' (one of 12 Aditya)", "parentId": 1, "type": "consort" },
+    { "id": 3, "name": "Saraswati", "gender": "female", "description": "- from the speech of 'Brahma'", "parentId": 1, "type": "consort" },
+    { "id": 4, "name": "Gayatri", "gender": "female", "description": "- from the Vedic Ritual through a Cow's ear", "parentId": 1, "type": "consort" },
+    { "id": 5, "name": "Sanakadika Rishis", "gender": "male", "description": "- they are the four primeval, mind-born sons (Manasputras) of the 'Brahma', they are eternal children", "parentId": 1, "type": "child" },
+    { "id": 6, "name": "1. Sanaka", "gender": "male", "parentId": 5, "type": "child" },
+    { "id": 7, "name": "2. Sanandana", "gender": "male", "parentId": 5, "type": "child" },
+    { "id": 8, "name": "3. Sanatana", "gender": "male", "parentId": 5, "type": "child" },
+    { "id": 9, "name": "4. Sanatkumara", "gender": "male", "parentId": 5, "type": "child" },
+    { "id": 10, "name": "Narada", "gender": "male", "description": "- maharishi and a manasputra of 'Lord Brahma', they are divine messenger and a traveler across triloka", "parentId": 1, "type": "child" }
+  ]
+}
