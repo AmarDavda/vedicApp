@@ -1,5 +1,5 @@
 {
-  "lastId": 131,
+  "lastId": 141,
   "lokas": [
     { "id": 1, "name": "Brahmajyoti", "description": "", "color": "#ffffb8", "parentId": null },
     { "id": 2, "name": "Madhuryadham", "description": "", "color": "#f7f764", "parentId": 1 },
@@ -45,7 +45,6 @@
     { "id": 58, "name": "Antariksha", "description": "Bhoot-Pretas, Pisachas, Naitrutas, Andharas", "color": "#7087c2", "parentId": 46 },
     { "id": 60, "name": "Salty Water Ocean", "description": "", "color": "#21aeba", "parentId": 103 },
     { "id": 61, "name": "Jambu-dwipa", "description": "Humans", "color": "#669d48", "parentId": 60 },
-    { "id": 62, "name": "Meru", "description": "", "color": "#ffd333", "parentId": 61 },
     { "id": 64, "name": "Sugarcane Juice Ocean", "description": "", "color": "#e8d85a", "parentId": 103 },
     { "id": 65, "name": "Plaksa-dwipa", "description": "Humanoid Races", "color": "#669d48", "parentId": 64 },
     { "id": 66, "name": "Wine Ocean", "description": "", "color": "#dd6482", "parentId": 103 },
@@ -87,7 +86,7 @@
     { "id": 107, "name": "Sveta-dwipa", "description": "Other Divine Being, Demigods, and Liberated Souls", "color": "#f8f1f1", "parentId": 106 },
     { "id": 110, "name": "Apsara Loka", "description": "Apsaras", "color": "#f3bbe4", "parentId": 26 },
     { "id": 111, "name": "Gandharva Loka", "description": "Gandharvas", "color": "#96bd85", "parentId": 26 },
-    { "id": 119, "name": "Manovati", "description": "Satakaumbhi: Brahma - Bharti, situated in middle for Zinith/Upward direction.", "color": "#f4c7ee", "parentId": 118 },
+    { "id": 119, "name": "Manovati", "description": "Satakaumbhi: Brahma - Bharti, situated in middle for Zenith/Upward direction.", "color": "#f4c7ee", "parentId": 118 },
     { "id": 120, "name": "Amaravati (Capital of Swarga)", "description": "Indra - Sachi, situated in East.", "color": "#fbf893", "parentId": 118 },
     { "id": 121, "name": "Tejovati", "description": "Agniloka: Agni - Swaha, situated in Southeast.", "color": "#f98634", "parentId": 118 },
     { "id": 122, "name": "Samyamani", "description": "Dharma Sabha: Yama - Syamala, situated in South.", "color": "#7c7c18", "parentId": 118 },
@@ -98,6 +97,16 @@
     { "id": 127, "name": "Yasovati", "description": "Ishana(Rudra) - Rudrani, situated in Northeast.", "color": "#d4dbf7", "parentId": 118 },
     { "id": 128, "name": "Rahu-Ketu Loka", "description": "Rahu - Simhi\nKetu - Chitralekha", "color": "#d6a784", "parentId": 32 },
     { "id": 129, "name": "Kinnara Loka", "description": "Kinnaras", "color": "#d9c036", "parentId": 26 },
-    { "id": 131, "name": "Bhogavati", "description": "Capital of Nagaloka (Pannaga Loka)", "color": "#456349", "parentId": 88 }
+    { "id": 131, "name": "Bhogavati", "description": "Capital of Nagaloka (Pannaga Loka)", "color": "#456349", "parentId": 88 },
+    { "id": 132, "name": "Bharata Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 133, "name": "Kimpurusa Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 134, "name": "Hari Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 135, "name": "Ketumala Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 136, "name": "Ilavrita Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 137, "name": "Meru", "description": "", "color": "#e8e8e8", "parentId": 136 },
+    { "id": 138, "name": "Bhadrasva Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 139, "name": "Ramyaka Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 140, "name": "Hiranmaya Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 },
+    { "id": 141, "name": "Uttarakuru Varsha", "description": "", "color": "#e8e8e8", "parentId": 61 }
   ]
 }
