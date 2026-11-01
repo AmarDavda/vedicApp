@@ -46,7 +46,8 @@
     <ul class="list">
       @for (it of view().items; track it.file) {
         <li>
-          <a class="item" [href]="it.url" target="_blank" rel="noopener">
+          <a class="item" [href]="it.url" target="_blank" rel="noopener" type="application/pdf"
+             [attr.aria-label]="'Read ' + it.title + ' (PDF' + (size(it.size) ? ', ' + size(it.size) : '') + ')'">
             <span class="badge" aria-hidden="true">PDF</span>
             <span class="meta">
               <span class="title">{{ it.title }}</span>

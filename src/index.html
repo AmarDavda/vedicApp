@@ -2,9 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Vedic App</title>
+    <title>Vedic App – Vedic Cosmology, Family Tree & PDFs</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3b1d1d" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <!-- the meta description, canonical, social tags and structured data for each page are added at build time by scripts/postbuild-seo.mjs -->
+    <script>
+      // Old links that used #/cosmology, #/genealogy, #/reading keep working: send them to the real URL.
+      (function () {
+        var h = location.hash;
+        if (h && h.indexOf('#/') === 0) {
+          var base = document.baseURI.split('#')[0].split('?')[0];
+          location.replace(base + h.slice(2).replace(/\/+$/, ''));
+        }
+      })();
+    </script>
   </head>
   <body>
     <app-root></app-root>

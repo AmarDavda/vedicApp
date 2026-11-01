@@ -1,0 +1,39 @@
+{
+  "_readme": "Single place for your SEO settings. Edit siteUrl (and the optional verification codes), then run: npm run build",
+  "siteUrl": "https://amardavda.github.io/vedicApp",
+  "siteName": "Vedic App",
+  "language": "en",
+  "author": "Amar Davda",
+  "googleSiteVerification": "",
+  "bingSiteVerification": "",
+  "pages": [
+    {
+      "path": "",
+      "title": "Vedic App – Explore Vedic Cosmology, Puranic Genealogy & Sacred Scriptures",
+      "description": "Discover the vast knowledge of Sanatan Dharma through Vedic cosmology, Puranic genealogies and an extensive collection of sacred scriptures. Explore the fourteen lokas, their divine residents, celestial realms, cosmic structures and directions; trace ancient lineages from Brahma, Rishis and Prajapatis to Surya Vansh, Chandra Vansh, gotras and ancestral family trees; and read the Vedas, Puranas, Sampradaya scriptures and other traditional Vedic literature in one free knowledge platform.",
+      "h1": "Explore the World of Vedic Knowledge",
+      "intro": "Vedic App is a knowledge platform dedicated to exploring and understanding the vast heritage of Sanatan Dharma and Vedic traditions. Discover the structure of the Vedic cosmos, including its spiritual and material realms, the different lokas, their divine entities, residents, structures and directions. Explore Puranic genealogies and ancient family lineages, from Brahma and the great Rishis to Devas, Surya Vansh, Chandra Vansh, gotras and ancestral connections. Access a growing library of Vedic scriptures, including the four Vedas, Puranas, Sampradaya literature and other traditional books of spiritual and philosophical knowledge. All these resources come together in one place to make the exploration of Vedic heritage easier and more accessible."
+    },
+    {
+      "path": "cosmology",
+      "title": "Vedic Cosmology – Explore the 14 Lokas, Realms & Divine Worlds | Vedic App",
+      "description": "Explore the universe according to Vedic and Puranic cosmology through an interactive map of the different lokas and cosmic realms. Learn about the seven higher lokas, earthly realm, seven lower lokas, spiritual abodes such as Goloka and Vaikuntha, and descriptions of Naraka. Discover their structures, dimensions, directions, divine entities, celestial beings, inhabitants and relationships. Understand how the different worlds are organised within the traditional Vedic cosmic structure.",
+      "h1": "Vedic Cosmology – Explore the Lokas and Cosmic Realms",
+      "intro": "Discover the fascinating structure of the Vedic cosmos through an interactive exploration of its spiritual and material worlds. Learn about the fourteen principal lokas, from Satyaloka, Tapoloka, Janaloka, Maharloka and the heavenly realms to Bhuloka and the seven lower realms of Patala. Explore spiritual abodes such as Goloka and Vaikuntha, along with the different descriptions of Naraka found in traditional texts. Understand the characteristics, structures, dimensions, directions and positions of these realms, along with their presiding deities, divine entities, celestial beings and other inhabitants. Explore how the different lokas are connected and organised within the traditional cosmic framework, with the ability to customise, add, edit and recolour realms in the interactive cosmology map."
+    },
+    {
+      "path": "genealogy",
+      "title": "Vedic & Puranic Genealogy – Explore Ancient Lineages, Rishis, Gotras & Vanshavalis | Vedic App",
+      "description": "Explore ancient genealogies and family lineages from Vedic and Puranic traditions through an interactive family tree. Trace the lineage beginning with Brahma, including Prajapatis, great Rishis, Devas, their consorts and descendants. Discover Surya Vansh (Solar Dynasty), Chandra Vansh (Lunar Dynasty), royal lineages, gotras, traditional ancestral connections and other Puranic family relationships. Build, customise and save family trees with individuals, spouses, children and historical notes.",
+      "h1": "Vedic & Puranic Genealogy – Explore Ancient Family Lineages",
+      "intro": "Explore the vast genealogical heritage preserved in Vedic and Puranic traditions through an interactive family tree. Begin with Brahma and trace the generations of Prajapatis, great Rishis, sages, Devas, their consorts, children and descendants. Discover important ancestral lineages such as Surya Vansh (Solar Dynasty) and Chandra Vansh (Lunar Dynasty), along with their kings, descendants and connections to other Puranic families. Explore traditional gotras, Rishi lineages, ancestral relationships, caste and community genealogies, and other historical family connections as documented in traditional sources. Create and organise family trees by adding individuals, spouses, children and notes, making it easier to visualise complex generations and relationships. Customise your genealogy, edit existing entries and export your family tree as a JSON file for future use."
+    },
+    {
+      "path": "reading",
+      "title": "Vedic Reading Library – Vedas, Puranas, Sampradaya Books & Scriptures | Vedic App",
+      "description": "Explore a collection of traditional Vedic and Sanatan Dharma reading materials in digital PDF format. Read the four Vedas, eighteen Mahapuranas, selected Upapuranas, Bhagavata Purana, cosmological texts, Shad Darshan, Sampradaya scriptures, Shikshapatri, Vachanamrita and other spiritual, philosophical and historical books. Search the library by title and access available documents directly in your browser.",
+      "h1": "Vedic Reading Library – Scriptures, Puranas & Traditional Literature",
+      "intro": "Discover a growing digital library of Vedic, Puranic and traditional Sanatan Dharma literature. Explore the four Vedas, eighteen Mahapuranas, other Puranic works, Upanishadic literature, Itihasas, philosophical texts and books explaining different aspects of Vedic knowledge. Access scriptures and publications from various Sampradayas, including traditional spiritual teachings, commentaries, Shikshapatri, Vachanamrita and other important religious and philosophical works. The collection also includes reading materials on Vedic cosmology, ancient history, traditions, spiritual practices and Indian philosophy. Browse the available resources, search for books by title and open PDF documents directly in your browser for convenient reading and exploration."
+    }
+  ]
+}

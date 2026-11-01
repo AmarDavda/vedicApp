@@ -1,12 +1,13 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withHashLocation } from '@angular/router';
+import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    // hash URLs (#/cosmology) work on any static host and when opening the built files directly
-    provideRouter(routes, withHashLocation()),
+    // real URLs (/cosmology) so search engines can index every page. GitHub Pages gets one HTML file per page, made
+    // by scripts/postbuild-seo.mjs (plus 404.html).
+    provideRouter(routes),
   ],
 };
