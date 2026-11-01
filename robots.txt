@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amardavda.github.io/vedicApp/sitemap.xml
